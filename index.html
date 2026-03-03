@@ -381,6 +381,35 @@
             padding: 10px 24px;
             font-size: 15px;
         }
+        .menu-item-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+        }
+        .menu-item-share-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 10px 18px;
+            font-size: 0.9rem;
+            background: #fff;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .menu-item-share-btn:hover {
+            background: rgba(200, 50, 50, 0.08);
+        }
+        .menu-item-share-btn i {
+            font-size: 0.95rem;
+        }
         
         /* قسم الفروع */
         .branches-section {
@@ -1712,28 +1741,35 @@
 
         document.addEventListener('DOMContentLoaded', observeScrollElements);
 
-        // بيانات المنيو
+        // بيانات المنيو (مرتبة: كبسات وأرز → بيتزا → مشكلات ووجبات سريعة → مشروبات)
         const menuItems = [
-            // الوجبات الرئيسية - حبة كاملة
+            // ١) الكبسات والأرز
             { id: 1, name: "حبه فحم مع الرز", description: "دجاج على الفحم مع الأرز", price: "44", category: "main", image: "دجاج فحم.jpeg" },
             { id: 2, name: "حبه شواية مع الرز", description: "دجاج شواية مع الأرز", price: "44", category: "main", image: "دجاج شواية.jpeg" },
-            // الوجبات الرئيسية - نصف
             { id: 6, name: "نص فحم مع الرز", description: "نصف دجاج على الفحم مع الأرز", price: "22", category: "main", image: "دجاج فحم.jpeg" },
-            // المشروبات
-            { id: 18, name: "بيبسي علبة", description: "بيبسي، حمضيات، فانتا، فيفا، سفن", price: "3", category: "drinks", image: "https://cdn.salla.sa/YZVXo/Ka0RO1di4kn0hM1YQNaP0TT6NsjkrIbTofK1Hd02.png" },
-            { id: 19, name: "بيبسي 1 لتر", description: "عبوة لتر واحد", price: "5", category: "drinks", image: "https://cdn.mafrservices.com/sys-master-root/he3/h91/13975978410014/1696438_main.jpg?im=Resize=480" },
-            { id: 20, name: "بيبسي عائلة", description: "عبوة عائلة", price: "10", category: "drinks", image: "https://cdn.mafrservices.com/sys-master-root/hd6/h72/51636547878942/132370_main.jpg" },
-            { id: 21, name: "لبن المراعي", description: "لبن طازج", price: "2", category: "drinks", image: "https://cdn.mafrservices.com/sys-master-root/h48/hb0/50520420646942/480629_main.jpg?im=Resize=480" },
-            { id: 22, name: "زبادي", description: "زبادي طازج", price: "2", category: "drinks", image: "https://cdn.salla.sa/xPdma/wo7sGFltvCb4rlPvU7k6VjtmRRoGyfvnpFtcLnuq.jpg" },
-            // الأيدامات والسلطات
-             { id: 23, name: "مشكل خضار", description: "مجموعة من الخضار المختلطة", price: "8", category: "desserts", image: "مشكل خضار.jpeg" },
+            { id: 33, name: "مقلقل لحم", description: "مقلقل لحم بالبهارات والرز", price: "18", category: "main", image: "مقلقل لحم.jpeg" },
+            { id: 34, name: "مقلقل دجاج", description: "مقلقل دجاج بالبهارات والرز", price: "15", category: "main", image: "مقلقل دجاج.jpeg" },
+            { id: 46, name: "كبدة غنم طازج", description: "كبدة غنم طازجة مشوية", price: "15", category: "main", image: "كبدة غنم طازج.jpeg" },
+            { id: 47, name: "جريش", description: "جريش قمح تقليدي", price: "8", category: "main", image: "جريش.jpeg" },
+            // ٢) البيتزا
+            { id: 50, name: "بيتزا سبايسي دجاج", description: "بيتزا سبايسي دجاج", price: "23", category: "main", image: "102~1.jpg.jpeg", imageContain: true },
+            { id: 52, name: "بيتزا عش بالبل", description: "بيتزا عش بالبل", price: "15", category: "main", image: "105~1.jpg.jpeg", imageContain: true },
+            { id: 53, name: "بيتزا خضار جبن سائل", description: "بيتزا خضار وجبن سائل", price: "18", category: "main", image: "1000.jpg.jpeg", imageContain: true },
+            { id: 54, name: "بيتزا لبنة زعتر", description: "بيتزا لبنة وزعتر", price: "15", category: "main", image: "109~1.jpg.jpeg", imageContain: true },
+            { id: 56, name: "بيتزا دجاج دنميت", description: "بيتزا دجاج دنميت", price: "23", category: "main", image: "116~1.jpg.jpeg", imageContain: true },
+            { id: 57, name: "بيتزا ببروني", description: "بيتزا ببروني", price: "23", category: "main", image: "118~1.jpg.jpeg", imageContain: true },
+            { id: 59, name: "بيتزا جبن سائل", description: "بيتزا جبن سائل", price: "15", category: "main", image: "117~1.jpg.jpeg", imageContain: true },
+            { id: 60, name: "بيتزا نقانق جبن سائل", description: "بيتزا نقانق وجبن سائل", price: "18", category: "main", image: "111~1.jpg.jpeg", imageContain: true },
+            { id: 61, name: "بيتزا ميكس", description: "بيتزا ميكس", price: "30", category: "main", image: "112~1.jpg.jpeg", imageContain: true },
+            { id: 62, name: "بيتزا خضار دجاج", description: "بيتزا خضار ودجاج", price: "23", category: "main", image: "103~1.jpg.jpeg", imageContain: true },
+            { id: 63, name: "بيتزا خضار", description: "بيتزا خضار", price: "15", category: "main", image: "122~1.jpg.jpeg", imageContain: true },
+            { id: 64, name: "بيتزا نقانق", description: "بيتزا نقانق", price: "15", category: "main", image: "110~1.jpg.jpeg", imageContain: true },
+            { id: 66, name: "بيتزا فاهيتا", description: "بيتزا فاهيتا", price: "23", category: "main", image: "1115~1.jpg.jpeg", imageContain: true },
+            // ٣) المشكلات والوجبات السريعة (فاصولياء، فول، معصوب، إلخ)
             { id: 23, name: "مشكل خضار", description: "مجموعة من الخضار المختلطة", price: "8", category: "desserts", image: "مشكل خضار.jpeg" },
             { id: 24, name: "مشكل فرن", description: "خضار مشكلة من الفرن", price: "9", category: "desserts", image: "مشكل فرن.jpeg" },
             { id: 25, name: "بامية", description: "بامية مطبوخة", price: "8", category: "desserts", image: "بامية.jpeg" },
             { id: 27, name: "مسقعة", description: "مسقعة بالباذنجان", price: "10", category: "desserts", image: "مسقع.jpeg" },
-            // وجبات جديدة (صورة وسعر فارغان)
-            { id: 33, name: "مقلقل لحم", description: "مقلقل لحم بالبهارات والرز", price: "18", category: "main", image: "مقلقل لحم.jpeg" },
-            { id: 34, name: "مقلقل دجاج", description: "مقلقل دجاج بالبهارات والرز", price: "15", category: "main", image: "مقلقل دجاج.jpeg" },
             { id: 36, name: "خبز ملوح", description: "خبز يمني ملوح طازج", price: "3", category: "desserts", image: "خبز ملوح.jpeg" },
             { id: 37, name: "فول صنعاني", description: "فول بالطريقة الصنعانية", price: "9", category: "desserts", image: "فول صنعاني.jpeg" },
             { id: 38, name: "فاصولياء بيضاء", description: "فاصولياء بيضاء مطبوخة", price: "10", category: "desserts", image: "فاصولياء بيضاء.jpeg" },
@@ -1744,8 +1780,12 @@
             { id: 43, name: "فاصولياء ناشف", description: "فاصولياء ناشفة مطبوخة", price: "11", category: "desserts", image: "فاصولياء ناشف.jpeg" },
             { id: 44, name: "معصوب ملكي", description: "معصوب ملكي بالعسل والموز", price: "18", category: "desserts", image: "معصوب ملكي.jpeg" },
             { id: 45, name: "معصوب", description: "معصوب يمني تقليدي", price: "15", category: "desserts", image: "معصوب.jpeg" },
-            { id: 46, name: "كبدة غنم طازج", description: "كبدة غنم طازجة مشوية", price: "15", category: "main", image: "كبدة غنم طازج.jpeg" },
-            { id: 47, name: "جريش", description: "جريش قمح تقليدي", price: "8", category: "main", image: "جريش.jpeg" }
+            // ٤) المشروبات الغازية
+            { id: 18, name: "بيبسي علبة", description: "بيبسي، حمضيات، فانتا، فيفا، سفن", price: "3", category: "drinks", image: "https://cdn.salla.sa/YZVXo/Ka0RO1di4kn0hM1YQNaP0TT6NsjkrIbTofK1Hd02.png" },
+            { id: 19, name: "بيبسي 1 لتر", description: "عبوة لتر واحد", price: "5", category: "drinks", image: "https://cdn.mafrservices.com/sys-master-root/he3/h91/13975978410014/1696438_main.jpg?im=Resize=480" },
+            { id: 20, name: "بيبسي عائلة", description: "عبوة عائلة", price: "10", category: "drinks", image: "https://cdn.mafrservices.com/sys-master-root/hd6/h72/51636547878942/132370_main.jpg" },
+            { id: 21, name: "لبن المراعي", description: "لبن طازج", price: "2", category: "drinks", image: "https://cdn.mafrservices.com/sys-master-root/h48/hb0/50520420646942/480629_main.jpg?im=Resize=480" },
+            { id: 22, name: "زبادي", description: "زبادي طازج", price: "2", category: "drinks", image: "https://cdn.salla.sa/xPdma/wo7sGFltvCb4rlPvU7k6VjtmRRoGyfvnpFtcLnuq.jpg" }
         ];
 
         // عرض المنيو
@@ -1760,6 +1800,7 @@
             filteredItems.forEach(item => {
                 const itemElement = document.createElement('div');
                 itemElement.className = 'menu-item scroll-animate';
+                itemElement.id = 'meal-' + item.id;
                 itemElement.setAttribute('data-category', item.category);
                 
                 const imgStyle = item.image ? "background-image: url('" + item.image + "')" : "";
@@ -1771,7 +1812,10 @@
                         <h3 class="menu-item-title">${item.name}</h3>
                         <p class="menu-item-desc">${item.description}</p>
                         <span class="menu-item-price">${priceText}</span>
-                        <button class="btn" onclick="addToCart(${item.id})">إضافة إلى قائمة الطلبات</button>
+                        <div class="menu-item-actions">
+                            <button class="btn" onclick="addToCart(${item.id})">إضافة إلى قائمة الطلبات</button>
+                            <button type="button" class="menu-item-share-btn" onclick="shareMeal(${item.id})" title="مشاركة الوجبة عبر واتساب"><i class="fas fa-share-alt"></i> مشاركة</button>
+                        </div>
                     </div>
                 `;
                 
@@ -1810,6 +1854,16 @@
             if (!item) return;
             orderCart.push({ id: item.id, name: item.name, price: item.price });
             updateCartUI();
+        }
+
+        function shareMeal(itemId) {
+            var item = menuItems.find(function(i) { return i.id === itemId; });
+            if (!item) return;
+            var baseUrl = window.location.href.split('#')[0];
+            var mealLink = baseUrl + '#meal-' + item.id;
+            var msg = 'تفضل هذه الوجبة من مطاعم ركاز الديرة:\n' + item.name + (item.price ? ' - ' + item.price + ' ريال' : '') + '\n' + mealLink;
+            var whatsappUrl = 'https://wa.me/?text=' + encodeURIComponent(msg);
+            window.open(whatsappUrl, '_blank');
         }
 
         function removeFromCart(index) {
@@ -2058,7 +2112,12 @@
         window.onload = function() {
             displayMenuItems();
             observeScrollElements();
-            
+            if (window.location.hash && window.location.hash.indexOf('meal-') === 0) {
+                setTimeout(function() {
+                    var el = document.getElementById(window.location.hash.slice(1));
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 400);
+            }
             // تهيئة حقل التاريخ في نموذج الحجز
             const dateEl = document.getElementById('date');
             if (dateEl) {
